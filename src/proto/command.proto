@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package command;
+
+service CommandService {
+  rpc Establish (stream Response) returns (stream Request) {}
+}
+
+message Response {
+  string uid = 1;
+  string data = 2;
+  string error = 3;
+}
+
+message Request {
+  string uid = 1;
+  string action = 2;
+  string data = 3;
+}

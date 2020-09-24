@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+package heartbeat;
+
+service HeartbeatService {
+  rpc Establish (stream Heartbeat) returns (stream Action) {}
+}
+
+message Heartbeat {
+  string hostname = 1;
+  int64 time = 2;
+  int64 uptime = 3;
+  int64 mem_free = 4;
+  int64 mem_total = 5;
+  int64 storage_free = 6;
+  int64 storage_used = 7;
+  int32 cpu_usage = 8;
+}
+
+message Action {
+  string uid = 1;
+  string action = 2;
+  string data = 3;
+}
